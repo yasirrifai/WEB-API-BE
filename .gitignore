@@ -1,0 +1,33 @@
+# Node.js related
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Environment variables
+.env
+
+# Dependency directories
+# Bower
+bower_components/
+# pnpm
+pnpm-lock.yaml
+# Yarn
+yarn.lock
+
+# IDE/Editor specific
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+*.swo
+*.out
+
+# macOS
+.DS_Store
+
+# Logs and testing
+logs
+*.log
