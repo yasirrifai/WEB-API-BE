@@ -1,12 +1,12 @@
-// src/api/routes/auth.js
 
-require('dotenv').config(); // Load environment variables from .env file
+
+require('dotenv').config();
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
-const secret = process.env.JWT_SECRET; // Use the secret from .env
-const bcrypt = require('bcrypt'); // Import bcrypt
+const secret = process.env.JWT_SECRET; 
+const bcrypt = require('bcrypt'); 
 
 // Registration route
 router.post('/register', async (req, res) => {
