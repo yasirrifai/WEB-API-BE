@@ -13,7 +13,7 @@ const { fetchToken, updateWeatherData,feedWeatherData } = require('./feedWeather
 const app = express();
 
 // Connect to MongoDB using the URI from the environment variables
-mongoose.connect("mongodb+srv://yasirrifai30:wYM6U3bkehcIzQXv@cluster0.bsamcsv.mongodb.net/weatherData", { useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect("mongodb+srv://yasirrifai30:wYM6U3bkehcIzQXv@cluster0.bsamcsv.mongodb.net/", { useNewUrlParser: true, useUnifiedTopology: true});
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
