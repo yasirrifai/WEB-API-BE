@@ -1,8 +1,5 @@
-// src/api/controllers/weatherDataController.js
 
 const WeatherData = require('../models/weatherData');
-// Define the cities array and cityCoordinates object at the top of your file
-
   const cityCoordinates = {
    'Colombo': [79.8612, 6.9271],
    'Kandy': [80.6398, 7.2944],
@@ -11,7 +8,6 @@ const WeatherData = require('../models/weatherData');
    'Kegalle': [80.5000, 7.0000]
   };
   
-  // Your existing code for getAllWeatherData, addWeatherData, getCurrentWeatherData, and updateWeatherData functions
   
 // Function to get all weather data
 exports.getAllWeatherData = async (req, res) => {
@@ -41,8 +37,7 @@ exports.addWeatherData = async (req, res) => {
  }
 };
 
-// src/api/controllers/weatherDataController.js
-
+// Function to get current weather data
 exports.getCurrentWeatherData = async (req, res) => {
    try {
       const weatherData = await WeatherData.aggregate([
@@ -62,25 +57,23 @@ exports.getCurrentWeatherData = async (req, res) => {
    }
   };
  
-  // Update the route handler to extract parameters from the request body
-exports.updateWeatherData = async (req, res) => {
+// Function to update weather data
+  exports.updateWeatherData = async (req, res) => {
    console.log(req);
-   const { city } = req.params; // Extract city from route parameters
-   const { temperature, humidity, airPressure } = req.body; // Extract temperature, humidity, and airPressure from request body
+   const { city } = req.params; 
+   const { temperature, humidity, airPressure } = req.body; 
 
    try {
       const updateData = {
           temperature: temperature,
           humidity: humidity,
           airPressure: airPressure,
-          timestamp: new Date().toISOString() // Current timestamp
+          timestamp: new Date().toISOString() 
       };
-  
-      // Update the weather data for the city
-      const updatedWeatherData = await WeatherData.findOneAndUpdate(
+        const updatedWeatherData = await WeatherData.findOneAndUpdate(
           { 'location.type': 'Point', 'location.coordinates': cityCoordinates[city] },
-          { $set: updateData }, // Use $set to update the specified fields
-          { new: true } // This option returns the updated document
+          { $set: updateData }, 
+          { new: true } 
       );
   
       if (!updatedWeatherData) {

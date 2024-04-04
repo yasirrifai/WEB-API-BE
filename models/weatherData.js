@@ -7,7 +7,7 @@ const WeatherDataSchema = new mongoose.Schema({
  timestamp: Date,
  location: {
     type: { type: String, default: 'Point' },
-    coordinates: { type: [Number], required: true } // Corrected placement of 'required'
+    coordinates: { type: [Number], required: true } 
  }
 });
 

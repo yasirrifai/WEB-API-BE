@@ -1,17 +1,17 @@
-require('dotenv').config(); // Load environment variables from .env file
+require('dotenv').config(); 
 const jwt = require('jsonwebtoken');
-const axios = require('axios'); // Import axios for making HTTP requests
-const secret = process.env.JWT_SECRET; // Use the secret from .env
+const axios = require('axios'); 
+const secret = process.env.JWT_SECRET; 
 
 const authMiddleware = (req, res, next) => {
  const token = req.header('Authorization');
- console.log('Token received:', token.replace('Bearer ', '')); // Debugging line
+ console.log('Token received:', token.replace('Bearer ', '')); 
 
  if (!token) return res.status(401).send('Access denied. No token provided.');
 
  try {
     const decoded = jwt.verify(token.replace('Bearer ', ''), secret);
-    console.log('Token decoded:', decoded); // Debugging line
+    console.log('Token decoded:', decoded); 
 
     req.user = decoded;
     next();
@@ -22,8 +22,6 @@ const authMiddleware = (req, res, next) => {
       // Token expired, attempt to refresh it
       refreshToken().then(newToken => {
         if (newToken) {
-          // Token refreshed successfully, you might want to store this new token somewhere
-          // For demonstration, we'll just log it
           console.log('Token refreshed successfully:', newToken);
         } else {
           console.error('Failed to refresh token.');
@@ -46,7 +44,7 @@ async function refreshToken() {
       username: process.env.USERNAME,
       password: process.env.PASSWORD
     });
-    const newToken = response.data.token; // Assuming the token is returned in the response
+    const newToken = response.data.token; 
     console.log('Token refreshed successfully:', newToken);
     return newToken;
  } catch (error) {
@@ -56,6 +54,6 @@ async function refreshToken() {
 }
 
 // Schedule the token refresh task
-setInterval(refreshToken, 58 * 60 * 1000); // 58 minutes in milliseconds
+setInterval(refreshToken, 58 * 60 * 1000); 
 
 module.exports = authMiddleware;

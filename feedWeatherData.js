@@ -1,4 +1,4 @@
-require('dotenv').config(); // Load environment variables from .env file
+require('dotenv').config(); 
 const axios = require('axios');
 const cities = [
  'Colombo',
@@ -8,7 +8,7 @@ const cities = [
  'Kegalle'
 ];
 
-let token = ''; // Initialize token variable
+let token = ''; 
 
 // Function to fetch token from login API
 async function fetchToken() {
@@ -77,7 +77,6 @@ async function updateWeatherData() {
      };
  
      try {
-       // Assuming you have an endpoint to update weather data by city name
        const response = await axios.patch(`${baseUrl}/${city}`, weatherData, {
          headers: {
            'Content-Type': 'application/json',
