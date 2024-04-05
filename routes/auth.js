@@ -8,7 +8,36 @@ const User = require('../models/User');
 const secret = process.env.JWT_SECRET; 
 const bcrypt = require('bcrypt'); 
 
-// Registration route
+/**
+ * @swagger
+ * /api/auth/register:
+ *   post:
+ *     summary: Register a new user
+ *     description: Register a new user with the provided username and password.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               username:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: User registered successfully.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 token:
+ *                   type: string
+ *       400:
+ *         description: Username already exists or invalid request body.
+ */
 router.post('/register', async (req, res) => {
     const { username, password } = req.body;
    
@@ -29,7 +58,36 @@ router.post('/register', async (req, res) => {
     res.json({ token });
 });
 
-// Login route
+/**
+ * @swagger
+ * /api/auth/login:
+ *   post:
+ *     summary: User login
+ *     description: Authenticate user with the provided username and password and generate JWT token.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               username:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: User authenticated successfully.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 token:
+ *                   type: string
+ *       401:
+ *         description: Invalid username or password.
+ */
 router.post('/login', async (req, res) => {
     const { username, password } = req.body;
    

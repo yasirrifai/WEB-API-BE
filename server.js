@@ -7,7 +7,8 @@ const weatherDataRoutes = require('./routes/weatherData');
 const authRoutes = require('./routes/auth'); 
 const cors = require('cors');
 const { fetchToken, updateWeatherData,feedWeatherData } = require('./feedWeatherData');
-
+const swaggerUi = require('swagger-ui-express');
+const specs = require('./swagger/swagger');
 const app = express();
 
 mongoose.connect("mongodb+srv://yasirrifai30:wYM6U3bkehcIzQXv@cluster0.bsamcsv.mongodb.net/weatherData", { useNewUrlParser: true, useUnifiedTopology: true});
@@ -36,6 +37,8 @@ fetchToken().then(() => {
    }).catch(error => {
     console.error('Failed to fetch token:', error.message);
    });
-   
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
