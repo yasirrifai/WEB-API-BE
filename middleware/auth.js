@@ -40,7 +40,7 @@ const authMiddleware = (req, res, next) => {
 
 async function refreshToken() {
  try {
-    const response = await axios.post(`http://localhost:${process.env.PORT}/api/auth/login`, {
+    const response = await axios.post(`https://nibm-web-api-cw-76a23b3dd18f.herokuapp.com/api/auth/login`, {
       username: process.env.USERNAME,
       password: process.env.PASSWORD
     });

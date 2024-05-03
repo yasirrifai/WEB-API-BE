@@ -13,7 +13,7 @@ let token = '';
 // Function to fetch token from login API
 async function fetchToken() {
  try {
-    const response = await axios.post(`http://localhost:${process.env.PORT}/api/auth/login`, {
+    const response = await axios.post(`https://nibm-web-api-cw-76a23b3dd18f.herokuapp.com/api/auth/login`, {
       username: process.env.USERNAME,
       password: process.env.PASSWORD
     });
@@ -24,7 +24,7 @@ async function fetchToken() {
  }
 }
 
-const baseUrl =`http://localhost:${process.env.PORT}/api/weatherData`;
+const baseUrl =`https://nibm-web-api-cw-76a23b3dd18f.herokuapp.com/api/weatherData`;
 
 // Example coordinates for the cities in Sri Lanka. Adjust these as necessary.
 const cityCoordinates = {
