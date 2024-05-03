@@ -13,6 +13,10 @@ const options = {
           url: 'http://localhost:3000/api',
           description: 'Development server',
         },
+        {
+          url: 'https://nibm-web-api-cw-76a23b3dd18f.herokuapp.com/api-docs/',
+          description: 'Production server',
+        },
       ],
       components: {
         schemas: {
