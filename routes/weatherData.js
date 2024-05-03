@@ -29,7 +29,27 @@ const authMiddleware = require('../middleware/auth');
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/WeatherDataInput'
+ *             type: object
+ *             properties:
+ *               city:
+ *                 type: string
+ *               temperature:
+ *                 type: number
+ *               humidity:
+ *                 type: number
+ *               airPressure:
+ *                 type: number
+ *               location:
+ *                 type: object
+ *                 properties:
+ *                   type:
+ *                     type: string
+ *                     enum:
+ *                       - Point
+ *                   coordinates:
+ *                     type: array
+ *                     items:
+ *                       type: number
  *     responses:
  *       201:
  *         description: Weather data added successfully.
